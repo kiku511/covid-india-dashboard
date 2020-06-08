@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Map, Marker, Popup, TileLayer, GeoJSON } from 'react-leaflet';
+import React from 'react';
+import { Map, TileLayer, GeoJSON } from 'react-leaflet';
 import states from '../assets/india.json';
 import populations from '../assets/populations.json';
 const position = [24.7679, 78.8718];
@@ -90,7 +90,7 @@ const Choropleth = (props) => {
     layer.setStyle({ color: '#9e3731', weight: 1.5 });
   };
   return (
-    <Map center={position} zoom={5}>
+    <Map center={position} zoom={5} tap="true">
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
