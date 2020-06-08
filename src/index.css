@@ -36,6 +36,11 @@ code {
 .holy-grail header {
   font-weight: bold;
   font-family: 'Titillium Web', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
 }
 
 .holy-grail header,
@@ -82,4 +87,28 @@ code {
   .leaflet-container {
     height: auto;
   }
+}
+
+h4 {
+  max-width: 800px;
+}
+
+h1,
+h4,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  display: inline-block;
+}
+
+.expand,
+.expand:active {
+  background: none;
+  color: #6c757d;
+  border: none;
+  font-size: large;
+  display: inline-flex;
+  outline: none;
 }

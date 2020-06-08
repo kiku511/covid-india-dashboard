@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Choropleth from './components/Choropleth';
 import populations from './assets/populations.json';
@@ -9,23 +8,13 @@ function App() {
   const [selectedState, setSelectedState] = useState('Total');
   const [data, setData] = useState(null);
   const [selectedStateData, setSelectedStateData] = useState('null');
-  console.log(selectedState);
+  const [visible, setVisible] = useState(true);
 
   const standardize = (statistic, state) => {
     if (standard) {
       let statePopulation = populations[selectedState];
       return ((statistic / statePopulation) * 1000000).toFixed(2);
     } else return statistic;
-  };
-
-  const getSelectedData = () => {
-    let stateData = null;
-    if (data) {
-      stateData = data.statewise.filter((feature) => {
-        return feature.state === selectedState;
-      });
-    }
-    return (stateData && stateData[0]) || null;
   };
 
   useEffect(() => {
@@ -37,9 +26,18 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const getSelectedData = () => {
+      let stateData = null;
+      if (data) {
+        stateData = data.statewise.filter((feature) => {
+          return feature.state === selectedState;
+        });
+      }
+      return (stateData && stateData[0]) || null;
+    };
     let stateData = getSelectedData();
     setSelectedStateData(stateData);
-  });
+  }, [data, selectedState]);
 
   let total = null;
   if (data) {
@@ -49,12 +47,35 @@ function App() {
   return (
     <div className="App holy-grail">
       <header>
-        <h1>COVID-19 India Dashboard</h1>
+        <div>
+          <h1>COVID-19 India Dashboard</h1>
+          <button
+            className="expand"
+            type="button"
+            onClick={() => {
+              setVisible(!visible);
+            }}
+          >
+            {visible && <strong>v</strong>}
+            {!visible && <strong>></strong>}
+          </button>
+        </div>
+        {visible && (
+          <div>
+            <h4 class="description">
+              As the nCovid19 spreads all over the world, India is emerging as
+              one of the most infected countries. This is especially worrisome
+              because of the population density of the country. This live
+              dashboard about the disease helps to keep a track of the current
+              situation in the country. Click 'v' to collapse this text.
+            </h4>
+          </div>
+        )}
+        <h3> Click on a state for more details. </h3>
       </header>
 
       <div className="holy-grail-body">
         <section className="holy-grail-content">
-          add legend and scale
           <Choropleth
             className="map-area"
             standard={standard}
@@ -105,13 +126,25 @@ function App() {
           lastupdatedtime:{' '}
           {selectedStateData && selectedStateData.lastupdatedtime}
           <br />
-          <button type="button" onClick={() => setStandard(false)}>
+          <button
+            type="button"
+            onClick={() => {
+              let legend = document.getElementById('legend');
+              if (legend) {
+                legend.remove();
+              }
+              setStandard(false);
+            }}
+          >
             Total Cases
           </button>
           <button
             type="button"
             onClick={() => {
-              console.log('pressed');
+              let legend = document.getElementById('legend');
+              if (legend) {
+                legend.remove();
+              }
               setStandard(true);
             }}
           >
