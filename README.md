@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3c02d872-11b0-4f7a-aab6-cea9ca137a31/deploy-status)](https://app.netlify.com/sites/covid-india-dashboard/deploys)
+
 React boilerplate readme below this:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
