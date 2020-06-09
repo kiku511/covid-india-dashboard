@@ -12,17 +12,17 @@ This is a dashboard that analyzes the situation of Coronavirus in India made in 
 - Although the lockdown in India is almost over, I want to use this dashboard for people to see that the situation is still spreading and they should take precautions in their daily lives.
 
 ## Data Sources
-1. API for Statistics for all states: [Covid 19 India API]()
-2. Population of India: [Government of India Population Projection 2019]()
-3. Basemap: [CartoDB Dark Basemap with labels]()
-4. India State Shapefiles: [Subhash9325/GeoJson-Data-of-Indian-States]()
+1. API for Statistics for all states: [Covid 19 India API](https://github.com/covid19india/api)
+2. Population of India: [Government of India Population Projection 2019](https://nhm.gov.in/New_Updates_2018/Report_Population_Projection_2019.pdf)
+3. Basemap: [CartoDB Dark Basemap with labels](http://www.basemaps.cartocdn.com/rastertiles/dark_all/%7Bz%7D/%7Bx%7D/%7By%7D.png)
+4. India State Shapefiles: [Subhash9325/GeoJson-Data-of-Indian-States](https://github.com/Subhash9325/GeoJson-Data-of-Indian-States)
 
 
 ## Major Libraries used
-1. [react-leaflet]()
-2. [netlify]()
-3. [react]()
-4. [moment]()
+1. [react-leaflet](https://react-leaflet.js.org/)
+2. [netlify](https://www.netlify.com/)
+3. [react](https://reactjs.org/)
+4. [moment](https://momentjs.com/)
 
 
 ## Acknowledgment
