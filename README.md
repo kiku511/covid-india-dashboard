@@ -2,7 +2,7 @@
 
 This is a dashboard that analyzes the situation of Coronavirus in India made in React using Leaflet(react-leaflet) and deployed on Netlify. It uses the covid19india api from https://www.covid19india.org/.
 
-[dashboard-screenshot](/img/dashboard-screenshot)
+[dashboard-screenshot](img/dashboard-screenshot.png)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3c02d872-11b0-4f7a-aab6-cea9ca137a31/deploy-status)](https://app.netlify.com/sites/covid-india-dashboard/deploys)
 
