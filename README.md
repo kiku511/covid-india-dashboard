@@ -1,6 +1,37 @@
+# Covid19 India Dashboard
+
+This is a dashboard that analyzes the situation of Coronavirus in India made in React using Leaflet(react-leaflet) and deployed on Netlify. It uses the covid19india api from https://www.covid19india.org/.
+
+[dashboard-screenshot](/img/dashboard-screenshot)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3c02d872-11b0-4f7a-aab6-cea9ca137a31/deploy-status)](https://app.netlify.com/sites/covid-india-dashboard/deploys)
 
-React boilerplate readme below this:
+## Project Goals
+- To make a smart dashboard that keeps a track of the current situation of nCovid-19 in India in order to provide a context to the people and policymakers.
+- To use skills learnt in GEOG458 and evaluate if I can make such a solution or not.
+- Although the lockdown in India is almost over, I want to use this dashboard for people to see that the situation is still spreading and they should take precautions in their daily lives.
+
+## Data Sources
+1. API for Statistics for all states: [Covid 19 India API]()
+2. Population of India: [Government of India Population Projection 2019]()
+3. Basemap: [CartoDB Dark Basemap with labels]()
+4. India State Shapefiles: [Subhash9325/GeoJson-Data-of-Indian-States]()
+
+
+## Major Libraries used
+1. [react-leaflet]()
+2. [netlify]()
+3. [react]()
+4. [moment]()
+
+
+## Acknowledgment
+ - Professor Jakob Zhao: GEOG 458, UW - Spring 2020 (https://github.com/jakobzhao/)
+
+
+
+
+## React Scripts:
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -31,42 +62,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
