@@ -4,11 +4,8 @@ import { useEffect } from 'react';
 
 const StandardLegend = (props) => {
   const { map } = useLeaflet();
-  // if (legend instanceof L.control) {
-  //   map.removeControl(legend);
-  // }
   const legend = L.control({
-    position: 'bottomright',
+    position: 'topright',
   });
 
   legend.onAdd = () => {

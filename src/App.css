@@ -68,3 +68,72 @@
 .description {
   font-weight: 100;
 }
+
+h1 {
+  font-size: xx-large;
+  color: white;
+}
+
+h2 {
+  font-size: x-large;
+  color: white;
+}
+
+.updatedTime {
+  margin: 0;
+}
+
+h3 {
+  font-size: x-large;
+}
+
+.confirmed {
+  color: #ee2c2c;
+}
+
+.active {
+  color: #007fff;
+}
+
+.deaths {
+  color: #707070;
+}
+
+.recovered {
+  color: #49e20e;
+}
+
+h6,
+h5,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.stat-type {
+  margin-bottom: 10%;
+}
+
+.unit {
+  margin: 0;
+  padding-bottom: 10%;
+  font-size: larger;
+}
+
+button {
+  font-size: larger;
+  font-family: 'Titillium Web', sans-serif;
+  border-radius: 6px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: #161625;
+  color: #a9a9a9;
+  border-color: #a9a9a9;
+}
+
+.holy-grail footer {
+  text-align: left;
+  padding: 1%;
+  font-size: small;
+}

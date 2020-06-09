@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Choropleth from './components/Choropleth';
 import populations from './assets/populations.json';
+import moment from 'moment';
 
 function App() {
   const [standard, setStandard] = useState(false);
@@ -11,10 +12,15 @@ function App() {
   const [visible, setVisible] = useState(true);
 
   const standardize = (statistic, state) => {
+    if (!statistic) return null;
     if (standard) {
       let statePopulation = populations[selectedState];
-      return ((statistic / statePopulation) * 1000000).toFixed(2);
-    } else return statistic;
+      return ((statistic / statePopulation) * 1000000)
+        .toFixed(2)
+        .toLocaleString();
+    } else {
+      return Number(statistic).toLocaleString();
+    }
   };
 
   useEffect(() => {
@@ -43,7 +49,7 @@ function App() {
   if (data) {
     total = data.statewise[0];
   }
-
+  console.log({ total });
   return (
     <div className="App holy-grail">
       <header>
@@ -62,7 +68,7 @@ function App() {
         </div>
         {visible && (
           <div>
-            <h4 class="description">
+            <h4 className="description">
               As the nCovid19 spreads all over the world, India is emerging as
               one of the most infected countries. This is especially worrisome
               because of the population density of the country. This live
@@ -85,46 +91,46 @@ function App() {
         </section>
 
         <div className="holy-grail-sidebar-1 hg-sidebar">
-          <p>Sidebar 1</p>
-          All India Statistics
+          <h2>All India Statistics</h2>
+          <p className="updatedTime">
+            {'Updated '}
+            {(total &&
+              moment(
+                moment(total.lastupdatedtime, 'DD/MM/YYYY hh:mm:ss').subtract(
+                  12.5,
+                  'hours'
+                )
+              ).fromNow()) ||
+              'NA'}
+          </p>
+          <h6 className="stat-type"> {standard ? 'PER MILLION' : 'TOTAL'}</h6>
+          <h2 className="confirmed">{total && standardize(total.confirmed)}</h2>
+          <h5 className="confirmed">
+            {total && Number(total.deltaconfirmed) > 0 ? '+' : ''}
+            {total && standardize(total.deltaconfirmed)}
+          </h5>
+          <p className="unit">confirmed</p>
           <br />
-          active: {total && standardize(total.active)}
+          <h2 className="active">{total && standardize(total.active)}</h2>
+          <h5 className="active">
+            {total && Number(total.deltaactive) > 0 ? '+' : ''}
+            {total && standardize(total.deltaactive)}
+          </h5>
+          <p className="unit">active</p>
           <br />
-          confirmed: {total && standardize(total.confirmed)}
+          <h2 className="deaths">{total && standardize(total.deaths)}</h2>
+          <h5 className="deaths">
+            {total && Number(total.deltadeaths) > 0 ? '+' : ''}
+            {total && standardize(total.deltadeaths)}
+          </h5>
+          <p className="unit">deaths</p>
           <br />
-          deaths: {total && standardize(total.deaths)}
-          <br />
-          deltaconfirmed: {total && standardize(total.deltaconfirmed)}
-          <br />
-          recovered: {total && standardize(total.recovered)}
-          <br />
-          deltarecovered: {total && standardize(total.deltarecovered)}
-          <br />
-          lastupdatedtime: {total && total.lastupdatedtime}
-        </div>
-
-        <div className="holy-grail-sidebar-2 hg-sidebar">
-          <p>Sidebar 2</p>
-          {selectedState}
-          <br />
-          active: {selectedStateData && standardize(selectedStateData.active)}
-          <br />
-          confirmed:{' '}
-          {selectedStateData && standardize(selectedStateData.confirmed)}
-          <br />
-          deaths: {selectedStateData && standardize(selectedStateData.deaths)}
-          <br />
-          deltaconfirmed:{' '}
-          {selectedStateData && standardize(selectedStateData.deltaconfirmed)}
-          <br />
-          recovered:{' '}
-          {selectedStateData && standardize(selectedStateData.recovered)}
-          <br />
-          deltarecovered:{' '}
-          {selectedStateData && standardize(selectedStateData.deltarecovered)}
-          <br />
-          lastupdatedtime:{' '}
-          {selectedStateData && selectedStateData.lastupdatedtime}
+          <h2 className="recovered">{total && standardize(total.recovered)}</h2>
+          <h5 className="recovered">
+            {total && Number(total.deltarecovered) > 0 ? '+' : ''}
+            {total && standardize(total.deltarecovered)}
+          </h5>
+          <p className="unit">recovered</p>
           <br />
           <button
             type="button"
@@ -138,6 +144,68 @@ function App() {
           >
             Total Cases
           </button>
+        </div>
+
+        <div className="holy-grail-sidebar-2 hg-sidebar">
+          <h2>{selectedState}</h2>
+          <p className="updatedTime">
+            {'Updated '}
+            {(selectedStateData &&
+              moment(
+                moment(
+                  selectedStateData.lastupdatedtime,
+                  'DD/MM/YYYY hh:mm:ss'
+                ).subtract(12.5, 'hours')
+              ).fromNow()) ||
+              'NA'}
+          </p>
+          <h6 className="stat-type"> {standard ? 'PER MILLION' : 'TOTAL'}</h6>
+          <h2 className="confirmed">
+            {selectedStateData && standardize(selectedStateData.confirmed)}
+          </h2>
+          <h5 className="confirmed">
+            {selectedStateData && Number(selectedStateData.deltaconfirmed) > 0
+              ? '+'
+              : ''}
+            {selectedStateData && standardize(selectedStateData.deltaconfirmed)}
+          </h5>
+          <p className="unit">confirmed</p>
+          <br />
+          <h2 className="active">
+            {selectedStateData && standardize(selectedStateData.active)}
+          </h2>
+          <h5 className="active">
+            {selectedStateData && Number(selectedStateData.deltaactive) > 0
+              ? '+'
+              : ''}
+            {selectedStateData && standardize(selectedStateData.deltaactive)}
+          </h5>
+          <p className="unit">active</p>
+          <br />
+          <h2 className="deaths">
+            {selectedStateData && standardize(selectedStateData.deaths)}
+          </h2>
+          <h5 className="deaths">
+            {selectedStateData && Number(selectedStateData.deltadeaths) > 0
+              ? '+'
+              : ''}
+            {selectedStateData && standardize(selectedStateData.deltadeaths)}
+          </h5>
+          <p className="unit">deaths</p>
+          <br />
+          <h2 className="recovered">
+            {selectedStateData && standardize(selectedStateData.recovered)}
+          </h2>
+          <h5 className="recovered">
+            {selectedStateData && Number(selectedStateData.deltarecovered) > 0
+              ? '+'
+              : ''}
+            {selectedStateData && standardize(selectedStateData.deltarecovered)}
+          </h5>
+          <p className="unit">recovered</p>
+
+          <br />
+
           <button
             type="button"
             onClick={() => {
@@ -155,8 +223,39 @@ function App() {
 
       <footer>
         <p>
-          Add references here: population, basemap, shapefile, api, covid19india
-          api
+          Sources:
+          <ol>
+            <li>
+              API for Statistics for all states:{' '}
+              <a href="https://github.com/covid19india/api">
+                Covid 19 India API
+              </a>
+            </li>
+            <li>
+              Population of India:{' '}
+              <a href="https://nhm.gov.in/New_Updates_2018/Report_Population_Projection_2019.pdf">
+                Government of India Population Prokection 2019
+              </a>
+            </li>
+            <li>
+              Basemap:{' '}
+              <a href="https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}.png">
+                {' '}
+                CartoDB Dark Basemap with labels
+              </a>
+            </li>
+            <li>
+              India State Shapefiles:{' '}
+              <a href="https://github.com/Subhash9325/GeoJson-Data-of-Indian-States">
+                {' '}
+                Subhash9325/GeoJson-Data-of-Indian-States
+              </a>
+            </li>
+          </ol>
+          Acknowledgement:
+          <ul>
+            <li>Professor Jakob Zhao: GEOG 458, UW - Spring 2020</li>
+          </ul>
         </p>
       </footer>
     </div>
